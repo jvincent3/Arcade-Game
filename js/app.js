@@ -14,11 +14,13 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+      this.x = 50;
+      this.y = 15;
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+      ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 // Now write your own player class
@@ -26,13 +28,38 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 class Player {
     constructor() {
-      this.sprite = 'images/char-horn-girl.png';
+      this.sprite = 'images/char-boy.png';
+      this.x = 202;
+      this.y = 303;
     }
-    update() {}
+    update() {
 
-    render() {}
+    }
+
+    render() {
+      ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
 
     handleInput(event) {
+        switch (event) {
+          case 'up':
+            this.y -= 101;
+            console.log(this.x + ' ' + this.y);
+            break;
+          case 'down':
+            this.y += 101;
+            console.log(this.x + ' ' + this.y);
+            break;
+          case 'right':
+            this.x += 101;
+            console.log(this.x + ' ' + this.y);
+            break;
+          case 'left':
+            this.x -= 101;
+            console.log(this.x + ' ' + this.y);
+            break;
+
+        }
         console.log(event);
     }
 }
