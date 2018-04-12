@@ -20,9 +20,8 @@ Enemy.prototype.update = function(dt) {
     // all computers.
       this.x = this.x + (dt * 100);
       if (this.y === undefined) {
-      this.y = Math.floor(Math.random() * Math.floor(505));  
+      this.y = Math.floor(Math.random() * Math.floor(505));
       }
-      //this.y = Math.floor(Math.random() * Math.floor(505));  
       if(this.x > 505) {
         this.x = 0;
       }
@@ -38,7 +37,7 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 class Player {
     constructor() {
-      this.sprite = 'images/char-boy.png';
+      this.sprite = 'images/char-horn-girl.png';
       this.x = 202;
       this.y = 303;
       this.height = 50;
@@ -55,19 +54,26 @@ class Player {
     handleInput(event) {
         switch (event) {
           case 'up':
+            if (this.y > 100) {
             this.y -= 101;
+            }
             console.log(this.x + ' ' + this.y);
             break;
           case 'down':
+            if( this.y < 405) {
             this.y += 101;
+            }
             console.log(this.x + ' ' + this.y);
             break;
           case 'right':
+          if (this.x < 405)
             this.x += 101;
             console.log(this.x + ' ' + this.y);
             break;
           case 'left':
+          if( this.x > 100) {
             this.x -= 101;
+          }
             console.log(this.x + ' ' + this.y);
             break;
 
@@ -83,7 +89,7 @@ let player = new Player();
 let enemy = new Enemy();
 let enemy1 = new Enemy();
 let enemy2 = new Enemy();
-let allEnemies = [enemy, enemy1, enemy2]
+let allEnemies = [enemy]
 
 
 // This listens for key presses and sends the keys to your
