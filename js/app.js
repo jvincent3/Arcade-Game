@@ -5,6 +5,10 @@ var Enemy = function() {
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
+    this.x = 1;
+    this.y;
+    this.height = 80;
+    this.width = 70;
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -14,8 +18,14 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-      this.x = 50;
-      this.y = 15;
+      this.x = this.x + (dt * 100);
+      if (this.y === undefined) {
+      this.y = Math.floor(Math.random() * Math.floor(505));  
+      }
+      //this.y = Math.floor(Math.random() * Math.floor(505));  
+      if(this.x > 505) {
+        this.x = 0;
+      }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -31,6 +41,8 @@ class Player {
       this.sprite = 'images/char-boy.png';
       this.x = 202;
       this.y = 303;
+      this.height = 50;
+      this.width = 90;
     }
     update() {
 
@@ -69,7 +81,9 @@ class Player {
 // Place the player object in a variable called player
 let player = new Player();
 let enemy = new Enemy();
-let allEnemies = [enemy]
+let enemy1 = new Enemy();
+let enemy2 = new Enemy();
+let allEnemies = [enemy, enemy1, enemy2]
 
 
 // This listens for key presses and sends the keys to your
