@@ -1,35 +1,33 @@
 // Enemies our player must avoid
-var Enemy = function() {
+class Enemy {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
+    constructor() {
+        // The image/sprite for our enemies, this uses
+        // a helper we've provided to easily load images
+        this.x = 1;
+        this.y;
+        this.height = 80;
+        this.width = 70;
+        this.sprite = 'images/enemy-bug.png';
+    }
+    // Update the enemy's position, required method for game
+    // Parameter: dt, a time delta between ticks
+    update(dt) {
+        this.x = this.x + (dt * 200);
+          if (this.y === undefined) {
+            this.y = Math.floor(Math.random() * Math.floor(404));
+          }
+          if(this.x > 404) {
+            this.x = 0;
+            this.y = Math.floor(Math.random() * Math.floor(404));
+          }
 
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
-    this.x = 1;
-    this.y;
-    this.height = 80;
-    this.width = 70;
-    this.sprite = 'images/enemy-bug.png';
-};
-
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
-      this.x = this.x + (dt * 100);
-      if (this.y === undefined) {
-      this.y = Math.floor(Math.random() * Math.floor(505));
-      }
-      if(this.x > 505) {
-        this.x = 0;
-      }
-};
-
-// Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
+    }
+    // Draw the enemy on the screen, required method for game
+    render() {
       ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
 };
 
 // Now write your own player class
@@ -39,7 +37,7 @@ class Player {
     constructor() {
       this.sprite = 'images/char-horn-girl.png';
       this.x = 202;
-      this.y = 303;
+      this.y = 404;
       this.height = 50;
       this.width = 90;
     }
