@@ -79,7 +79,25 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
+    }
+
+    function checkCollisions() {
+        let playerX = player.x;
+        let playerY = player.y
+        let playerWidth = player.width;
+        let playerHeight = player.height;
+        let enemyWidth = enemy.width;
+        let enemyHeight = enemy.height;
+
+            if (playerX < enemy.x + enemyWidth &&
+                playerY < enemy.y + enemyHeight &&
+                playerX+playerWidth > enemy.x &&
+                playerY+playerHeight > enemy.y ) {
+
+                player.x = 202;
+                player.y = 404;
+            }
     }
 
     /* This is called by the update function and loops through all of the
