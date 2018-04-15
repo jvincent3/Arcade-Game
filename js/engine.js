@@ -87,17 +87,17 @@ var Engine = (function(global) {
         let playerY = player.y
         let playerWidth = player.width;
         let playerHeight = player.height;
-        let enemyWidth = enemy.width;
-        let enemyHeight = enemy.height;
 
-            if (playerX < enemy.x + enemyWidth &&
-                playerY < enemy.y + enemyHeight &&
+        for (const enemy of allEnemies) {
+            if (playerX < enemy.x + enemy.width &&
+                playerY < enemy.y + enemy.height &&
                 playerX+playerWidth > enemy.x &&
                 playerY+playerHeight > enemy.y ) {
 
                 player.x = 202;
-                player.y = 404;
+                player.y = 380;
             }
+        }
     }
 
     /* This is called by the update function and loops through all of the
