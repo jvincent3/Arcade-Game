@@ -10,20 +10,20 @@ class Ladybug {
         this.height = 80;
         this.width = 70;
         this.sprite = 'images/enemy-bug.png';
-        this.cordY = [46, 128, 210];
-        this.cordX = [-500, -100, -200, 0];
+        this.coordY = [46, 128, 210];
+        this.coordX = [-500, -100, -200, 0];
     }
     // Update the enemy's position, required method for game
     // Parameter: dt, a time delta between ticks
     update(dt) {
         this.x = this.x + (dt * 200);
           if (this.y === undefined) {
-            this.y = this.cordY[Math.floor(Math.random() * Math.floor(3))];
-            this.x = this.cordX[Math.floor(Math.random() * Math.floor(4))];
+            this.y = this.coordY[Math.floor(Math.random() * Math.floor(3))];
+            this.x = this.coordX[Math.floor(Math.random() * Math.floor(4))];
           }
           if(this.x > 505) {
-            this.x = this.cordX[Math.floor(Math.random() * Math.floor(4))];
-            this.y = this.cordY[Math.floor(Math.random() * Math.floor(3))];
+            this.x = this.coordX[Math.floor(Math.random() * Math.floor(4))];
+            this.y = this.coordY[Math.floor(Math.random() * Math.floor(3))];
           }
 
     }
@@ -85,12 +85,35 @@ class Player {
     }
 }
 
+class Gem {
+  constructor() {
+    this.sprite = 'images/Gem Green.png';
+    this.x;
+    this.y;
+    this.coordX = [0,101,202,303,404];
+    this.coordY = [44,128, 212];
+    this.height = 80;
+    this.width = 100;
+  }
+  update() {
+    if (this.x == undefined || this.y == undefined) {
+    this.y = this.coordY[Math.floor(Math.random() * Math.floor(3))];
+    this.x = this.coordX[Math.floor(Math.random() * Math.floor(4))];
+
+    }
+  }
+  render() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  }
+}
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 let player = new Player();
 let enemy = new Ladybug();
 let allEnemies = [];
+let gem = new Gem();
 
 function enemySpawner(amount) {
   for (let i = 0 ; i < amount ; i++) {
