@@ -1,5 +1,5 @@
 // Enemies our player must avoid
-class Enemy {
+class Ladybug {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     constructor() {
@@ -10,17 +10,18 @@ class Enemy {
         this.height = 80;
         this.width = 70;
         this.sprite = 'images/enemy-bug.png';
+        this.cord = [46, 128, 210];
     }
     // Update the enemy's position, required method for game
     // Parameter: dt, a time delta between ticks
     update(dt) {
         this.x = this.x + (dt * 200);
           if (this.y === undefined) {
-            this.y = Math.floor(Math.random() * Math.floor(404));
+            this.y = this.cord[Math.floor(Math.random() * Math.floor(3))];
           }
           if(this.x > 404) {
             this.x = 0;
-            this.y = Math.floor(Math.random() * Math.floor(404));
+            this.y = this.cord[Math.floor(Math.random() * Math.floor(3))];
           }
 
     }
@@ -37,9 +38,11 @@ class Player {
     constructor() {
       this.sprite = 'images/char-horn-girl.png';
       this.x = 202;
-      this.y = 404;
+      this.y = 380;
       this.height = 50;
       this.width = 90;
+      this.moveUD = 84;
+      this.moveLR = 101;
     }
     update() {
 
@@ -53,24 +56,24 @@ class Player {
         switch (event) {
           case 'up':
             if (this.y > 100) {
-            this.y -= 101;
+            this.y -= this.moveUD;
             }
             console.log(this.x + ' ' + this.y);
             break;
           case 'down':
-            if( this.y < 405) {
-            this.y += 101;
+            if( this.y < 359) {
+            this.y += this.moveUD;
             }
             console.log(this.x + ' ' + this.y);
             break;
           case 'right':
-          if (this.x < 405)
-            this.x += 101;
+          if (this.x < 403)
+            this.x += this.moveLR;
             console.log(this.x + ' ' + this.y);
             break;
           case 'left':
           if( this.x > 100) {
-            this.x -= 101;
+            this.x -= this.moveLR;
           }
             console.log(this.x + ' ' + this.y);
             break;
@@ -84,11 +87,8 @@ class Player {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 let player = new Player();
-let enemy = new Enemy();
-let enemy1 = new Enemy();
-let enemy2 = new Enemy();
-let allEnemies = [enemy]
-
+let enemy = new Ladybug();
+let allEnemies = [];
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
