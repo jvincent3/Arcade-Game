@@ -10,18 +10,20 @@ class Ladybug {
         this.height = 80;
         this.width = 70;
         this.sprite = 'images/enemy-bug.png';
-        this.cord = [46, 128, 210];
+        this.cordY = [46, 128, 210];
+        this.cordX = [-500, -100, -200, 0];
     }
     // Update the enemy's position, required method for game
     // Parameter: dt, a time delta between ticks
     update(dt) {
         this.x = this.x + (dt * 200);
           if (this.y === undefined) {
-            this.y = this.cord[Math.floor(Math.random() * Math.floor(3))];
+            this.y = this.cordY[Math.floor(Math.random() * Math.floor(3))];
+            this.x = this.cordX[Math.floor(Math.random() * Math.floor(4))];
           }
-          if(this.x > 404) {
-            this.x = 0;
-            this.y = this.cord[Math.floor(Math.random() * Math.floor(3))];
+          if(this.x > 505) {
+            this.x = this.cordX[Math.floor(Math.random() * Math.floor(4))];
+            this.y = this.cordY[Math.floor(Math.random() * Math.floor(3))];
           }
 
     }
