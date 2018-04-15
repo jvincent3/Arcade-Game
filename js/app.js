@@ -55,7 +55,7 @@ class Player {
     handleInput(event) {
         switch (event) {
           case 'up':
-            if (this.y > 100) {
+            if (this.y > 0) {
             this.y -= this.moveUD;
             }
             console.log(this.x + ' ' + this.y);
@@ -90,14 +90,14 @@ let player = new Player();
 let enemy = new Ladybug();
 let allEnemies = [];
 
-function enemySpawner() {
-  for (let i = 0 ; i < 1 ; i++) {
+function enemySpawner(amount) {
+  for (let i = 0 ; i < amount ; i++) {
     allEnemies.push(new Ladybug())
     console.log('test');
   }
 }
 
-enemySpawner();
+enemySpawner(3);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
