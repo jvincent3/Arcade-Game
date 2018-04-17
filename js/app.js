@@ -15,7 +15,9 @@ class Ladybug {
     }
     // Update the enemy's position, required method for game
     // Parameter: dt, a time delta between ticks
-    update(dt) {
+    update(dt,difficulty) {
+      switch (difficulty) {
+        case "normal":
         this.x = this.x + (dt * 200);
           if (this.y === undefined) {
             this.y = this.coordY[Math.floor(Math.random() * Math.floor(3))];
@@ -25,6 +27,25 @@ class Ladybug {
             this.x = this.coordX[Math.floor(Math.random() * Math.floor(4))];
             this.y = this.coordY[Math.floor(Math.random() * Math.floor(3))];
           }
+          break;
+        case "hard":
+          this.x = this.x + (dt * 200);
+          if (this.y === undefined) {
+            this.y = this.coordY[Math.floor(Math.random() * Math.floor(3))];
+            this.x = this.coordX[Math.floor(Math.random() * Math.floor(4))];
+          }
+          if(this.x > 505) {
+            this.x = this.coordX[Math.floor(Math.random() * Math.floor(4))];
+            this.y = this.coordY[Math.floor(Math.random() * Math.floor(3))];
+          }
+        break;
+        case "DNT":
+          this.x = this.x + (dt * 200);
+          this.y = Math.floor(Math.random() * Math.floor(210));
+          this.x = Math.floor(Math.random() * Math.floor(505));
+
+          break;
+      }
 
     }
     // Draw the enemy on the screen, required method for game
@@ -110,19 +131,60 @@ class Gem {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
+let gem = new Gem();
 let player = new Player();
 let enemy = new Ladybug();
 let allEnemies = [];
-let gem = new Gem();
+let diffic;
 
-function enemySpawner(amount) {
-  for (let i = 0 ; i < amount ; i++) {
-    allEnemies.push(new Ladybug())
-    console.log('test');
+function enemySpawner(diffic) {
+  let ladybugs;
+  switch (diffic) {
+
+    case "normal":
+      ladybugs = 3;
+      console.log('norma');
+      break;
+
+    case "hard":
+      ladybugs = 5;
+      console.log('hard');
+      break;
+    case "dnt":
+      ladybugs = 10;
+      console.log('it works');
+      break;
   }
+      for (let i = 0 ; i < ladybugs ; i++) {
+        allEnemies.push(new Ladybug());
+      }
+  
 }
 
-enemySpawner(3);
+enemySpawner(diffic);
+
+function modal() {
+  const modal = document.getElementById('modal');
+
+  modal.addEventListener('click', function(e){
+
+    if(e.target.tagName == 'INPUT') {
+      //Checks if this element contains src image
+      if (e.target.nextElementSibling.src) {
+      let imgsrc = e.target.nextElementSibling.src;
+      let splitImgSrc = imgsrc.split('/');
+      //Takes the last src address then adds it to the Player to change character
+      player.sprite = "images/" + splitImgSrc[splitImgSrc.length - 1];
+      } else {
+      diffic = e.target.nextElementSibling.innerText.toLowerCase();;
+      
+      }
+      console.log(diffic);
+    }
+  });
+}
+
+
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
