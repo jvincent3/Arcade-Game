@@ -39,7 +39,7 @@ class Ladybug {
             this.y = this.coordY[Math.floor(Math.random() * Math.floor(3))];
           }
         break;
-        case "DNT":
+        case "do not try":
           this.x = this.x + (dt * 200);
           this.y = Math.floor(Math.random() * Math.floor(210));
           this.x = Math.floor(Math.random() * Math.floor(505));
@@ -150,8 +150,8 @@ function enemySpawner(diffic) {
       ladybugs = 5;
       console.log('hard');
       break;
-    case "dnt":
-      ladybugs = 10;
+    case "do not try":
+      ladybugs = 100;
       console.log('it works');
       break;
   }

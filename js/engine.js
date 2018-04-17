@@ -44,7 +44,7 @@ var Engine = (function(global) {
         /* Call our update/render functions, pass along the time delta to
          * our update function since it may be used for smooth animation.
          */
-        update(dt);
+        update(dt,diffic);
         render();
 
         /* Set our lastTime variable which is used to determine the time delta
@@ -77,9 +77,10 @@ var Engine = (function(global) {
      * functionality this way (you could just implement collision detection
      * on the entities themselves within your app.js file).
      */
-    function update(dt) {
-        updateEntities(dt);
+    function update(dt, diffic) {
+        updateEntities(dt, diffic);
         checkCollisions();
+        modal();
     }
 
     function checkCollisions() {
@@ -115,12 +116,14 @@ var Engine = (function(global) {
      * the data/properties related to the object. Do your drawing in your
      * render methods.
      */
-    function updateEntities(dt) {
+    function updateEntities(dt, diffic) {
+
         allEnemies.forEach(function(enemy) {
-            enemy.update(dt);
+            enemy.update(dt, diffic);
         });
         player.update();
         gem.update();
+
     }
 
     /* This function initially draws the "game level", it will then call
@@ -190,7 +193,9 @@ var Engine = (function(global) {
      */
     function reset() {
         // noop
+        $('#modal').modal('toggle');
     }
+
 
     /* Go ahead and load all of the images we know we're going to need to
      * draw our game level. Then set init as the callback method, so that when
