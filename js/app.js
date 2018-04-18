@@ -132,11 +132,12 @@ class Gem {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 const scoreEl = document.querySelectorAll('.score');
+const startButton = document.getElementById('startButton');
 let gem = new Gem();
 let player = new Player();
 let enemy = new Ladybug();
 let allEnemies = [];
-let diffic;
+let diffic = "normal";
 let scorePoints = 0;
 
 function enemySpawner(diffic) {
@@ -162,8 +163,6 @@ function enemySpawner(diffic) {
       }
   
 }
-
-enemySpawner(diffic);
 
 function modal() {
   const modal = document.getElementById('modal');
@@ -199,4 +198,8 @@ document.addEventListener('keyup', function(e) {
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
+});
+
+startButton.addEventListener('click', function () {
+  enemySpawner(diffic);
 });
