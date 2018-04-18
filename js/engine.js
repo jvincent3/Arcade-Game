@@ -66,6 +66,7 @@ var Engine = (function(global) {
         reset();
         lastTime = Date.now();
         main();
+        gameStart();
     }
 
     /* This function is called by main (our game loop) and itself calls all
@@ -106,9 +107,28 @@ var Engine = (function(global) {
             playerY+playerHeight > gem.y ) {
             gem.y = gem.coordY[Math.floor(Math.random() * Math.floor(3))];
             gem.x = gem.coordX[Math.floor(Math.random() * Math.floor(4))];
+            scorePoints = scorePoints + 50;
+            scoreEl[0].innerHTML = 'Score: ' + scorePoints;
+        }
+        if(playerY == -40 && !($('#modalwin').hasClass('show')) ) {
+            scoreEl[1].innerHTML = `Score: ${scorePoints} 
+            <div><img src="${player.sprite}" alt="character"></div>`;
+            $('#modalwin').modal({
+            backdrop: 'static',
+            keyboard: false,
+            show: true
+            });
         }
     }
 
+    function gameStart() {
+        $('#modal').modal({
+            backdrop: 'static',
+            keyboard: false,
+            show: true
+        });
+
+    }
     /* This is called by the update function and loops through all of the
      * objects within your allEnemies array as defined in app.js and calls
      * their update() methods. It will then call the update function for your
@@ -193,7 +213,20 @@ var Engine = (function(global) {
      */
     function reset() {
         // noop
-        $('#modal').modal('toggle');
+
+        const restButton = document.querySelectorAll('.restart');
+
+
+        for (let button of restButton) {
+            button.addEventListener('click', function() {
+                player.x = 202;
+                player.y = 380;
+                scorePoints = 0;
+                scoreEl[0].innerHTML = 'Score: ' + scorePoints;
+                allEnemies = [];
+                gameStart();
+            });
+        }
     }
 
 
