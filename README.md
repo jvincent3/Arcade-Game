@@ -9,7 +9,8 @@ Click here: [Play it live and experience the adventure!](https://jvincent3.githu
 ### Play the game locally
 
 __Download and install NodeJS__
-To play the game locally you will have to download  [Node.js](https://nodejs.org/en/). To check if you have succesfully downloaded your node you can easily write ```node -v``` in your command prompt, it will show you the current version of your Node.js.
+
+to play the game locally you will have to download  [Node.js](https://nodejs.org/en/). To check if you have succesfully downloaded your node you can easily write ```node -v``` in your command prompt, it will show you the current version of your Node.js.
 
 Creating __Node modules__ first you will have to go to your project directory in your commant prompt:
 
@@ -39,7 +40,7 @@ You should see something like the following:
         http://127.0.0.1:8080
       Hit CTRL-C to stop the server 
   ```
-  Now you're all set, all you have to do ise to copy one of these url and paste it on your browser.
+  Now you're all set, all you have to do is to copy one of these url and paste it on your browser.
 
 ## Instructions
 
