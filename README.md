@@ -63,5 +63,5 @@ You should see something like the following:
 ## Dependencies
 
 
-* __Bootstrap 4__:
-* __jQuery__:
+* [__Bootstrap 4__](https://getbootstrap.com/)
+* [__jQuery__](https://jquery.com/)
