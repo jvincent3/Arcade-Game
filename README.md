@@ -13,6 +13,8 @@ To play the game locally you will have to download  [Node.js](https://nodejs.org
 
 Creating __Node modules__ first you will have to go to your project directory in your commant prompt:
 
+![Image link example](https://github.com/jvincent3/Arcade-Game/blob/master/images/README-IMG/Cmd-directory-example.png)
+
  Once you managed to be in the directy now we can safely call in cmd prompt ```npm init``` to create a package.json, it will ask you for some information but you can easily skip through and use the default options by just pressing enter.
  
  ___Install the http-server package from npm___ 
@@ -22,7 +24,7 @@ Install http-server globally using npm to allow you to run a web server from you
 Open cmd and enter the follow:
   ```npm install -g http-server```
   
-__Start a web server__
+___Start a web server___
 
 Go to the directory of your project with cmd-prompt
   ```cd \documents/github/project-example``` 
@@ -37,6 +39,7 @@ You should see something like the following:
         http://127.0.0.1:8080
       Hit CTRL-C to stop the server 
   ```
+  Now you're all set, all you have to do ise to copy one of these url and paste it on your browser.
 
 ## Instructions
 
