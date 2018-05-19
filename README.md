@@ -28,7 +28,7 @@ Open cmd and enter the follow:
 ___Start a web server___
 
 Go to the directory of your project with cmd-prompt
-  ```cd \documents/github/project-example``` 
+  ```cd documents/github/project-example``` 
 Once you're in the directy you can easily start the server by writing the following:
   ```http-server```
 You should see something like the following:
